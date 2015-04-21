@@ -1,0 +1,102 @@
+// transition
+@mixin transition($args) {
+	-webkit-transition: $args;
+	-moz-transition: $args;
+	-ms-transition: $args;
+	-o-transition: $args;
+	transition: $args;
+}
+
+// set box sizing (defaults to border-box)
+@mixin box-sizing($value: border-box) {
+	box-sizing: $value;
+	-moz-box-sizing: $value;
+	-webkit-box-sizing: $value;
+}
+
+// breakpoints
+@mixin breakpoint-min-px($width) {
+	@media screen and (min-width: "#{$width}px") {
+		@content;
+	}
+}
+
+@mixin breakpoint-max-px($width) {
+	@media screen and (max-width: "#{$width}px") {
+		@content;
+	}
+}
+
+// Set a rem font size with pixel fallback
+@function calculateRem($size) {
+	$remSize: $size / 16px;
+	@return $remSize * 1rem;
+}
+
+// set the font size
+@mixin font-size($size) {
+	font-size: $size;
+	font-size: calculateRem($size);
+}
+
+// create a circle
+@mixin circle($width, $color) {
+	width: $width;
+	height: $width;
+	background: $color;
+	-webkit-border-radius: $width/2;
+	-moz-border-radius: $width/2;
+	border-radius: $width/2;
+}
+
+// set opacity (IE8 compatible)
+@mixin opacity($opacity) {
+	opacity: $opacity;
+	filter: alpha(opacity=($opacity * 100));
+}
+
+// set box shadow
+@mixin box-shadow( $h: 10px , $v: 10px , $b: 0px , $s: 0px , $c: #000000 ) {
+	-webkit-box-shadow: $h $v $b $s $c;
+	-moz-box-shadow: $h $v $b $s $c;
+	box-shadow: $h $v $b $s $c;
+}
+
+// gradient
+@mixin gradient($start-color, $end-color, $orientation)
+{
+	background: $start-color;
+	@if $orientation == vertical
+	{
+		// vertical
+		background: -moz-linear-gradient(top,  $start-color 0%, $end-color 100%);
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,$start-color), color-stop(100%,$end-color));
+		background: -webkit-linear-gradient(top,  $start-color 0%,$end-color 100%);
+		background: -o-linear-gradient(top,  $start-color 0%,$end-color 100%);
+		background: -ms-linear-gradient(top,  $start-color 0%,$end-color 100%);
+		background: linear-gradient(to bottom,  $start-color 0%,$end-color 100%);
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$start-color', endColorstr='$end-color',GradientType=0 );
+	}
+	@else if $orientation == horizontal
+	{
+		// horizontal
+		background: -moz-linear-gradient(left,  $start-color 0%, $end-color 100%);
+		background: -webkit-gradient(linear, left top, right top, color-stop(0%,$start-color), color-stop(100%,$end-color));
+		background: -webkit-linear-gradient(left,  $start-color 0%,$end-color 100%);
+		background: -o-linear-gradient(left,  $start-color 0%,$end-color 100%);
+		background: -ms-linear-gradient(left,  $start-color 0%,$end-color 100%);
+		background: linear-gradient(to right,  $start-color 0%,$end-color 100%);
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$start-color', endColorstr='$end-color',GradientType=1 );
+	}
+	@else
+	{
+		// radial
+		background: -moz-radial-gradient(center, ellipse cover,  $start-color 0%, $end-color 100%);
+		background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,$start-color), color-stop(100%,$end-color));
+		background: -webkit-radial-gradient(center, ellipse cover,  $start-color 0%,$end-color 100%);
+		background: -o-radial-gradient(center, ellipse cover,  $start-color 0%,$end-color 100%);
+		background: -ms-radial-gradient(center, ellipse cover,  $start-color 0%,$end-color 100%);
+		background: radial-gradient(ellipse at center,  $start-color 0%,$end-color 100%);
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$start-color', endColorstr='$end-color',GradientType=1 );
+	}
+}

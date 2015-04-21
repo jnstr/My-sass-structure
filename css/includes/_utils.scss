@@ -1,0 +1,96 @@
+// some helper classes
+
+
+/* Lay-out */
+    // display
+    .inline, .di        { display: inline }
+    .block, .db         { display: block }
+    .inline-block, .dib { display: inline-block }
+    .hidden, .dn        { display: none }
+
+    // overflow
+    .overflow-hidden, .oh { overflow: hidden }
+    .overflow-scroll, .os { overflow: scroll }
+    .overflow-auto, .oa   { overflow: auto }
+
+    // clearfix
+    .clearfix:before,
+    .clearfix:after {
+        content: " ";
+        display: table
+    }
+    .clearfix:after { clear: both }
+
+    // floating
+    .left, .fl  { float: left }
+    .right, .fr { float: right }
+
+    // width
+    .fit { max-width: 100% }
+    .half-width { width: 50% }
+    .full-width { width: 100% }
+
+/* Typography */
+
+    // font weiht
+    .bold, .fb    { font-weight: bold; }
+    .regular, .fn { font-weight: normal }
+    .italic, .fi  { font-style: italic }
+    .caps, .ttu   { text-transform: uppercase; letter-spacing: .2em; }
+
+    // text aligning
+    .left-align, .tal    { text-align: left }
+    .center, .tac       { text-align: center }
+    .right-align, .tar  { text-align: right }
+    .justify, .taj      { text-align: justify }
+
+    // whitespace
+    .nowrap { white-space: nowrap }
+
+/* Positions */
+    .relative, .por { position: relative; }
+    .absolute, .poa { position: absolute }
+    .fixed, .pof    { position: fixed }
+
+    $i: 0;
+    @while $i <= 25 {
+        // margin
+        .t-#{$i}, .top-#{$i}    { top: 1px * $i !important;    }
+        .l-#{$i}, .left-#{$i}   { left: 1px * $i !important;   }
+        .b-#{$i}, .bottom-#{$i} { bottom: 1px * $i !important; }
+        .r-#{$i}, .right-#{$i}  { right: 1px * $i !important;  }
+
+        // increment with 5
+        $i: $i + 5;
+    }
+
+    $i: 0;
+    @while $i <= 100 {
+        // margin
+        .z-#{$i}    { z-index: $i !important;    }
+
+        // increment with 5
+        $i: $i + 1;
+    }
+
+/* Margin & padding */
+    $i: 0;
+    @while $i <= 25 {
+        // margin
+        .m-#{$i}  { margin: 1px * $i !important;        }
+        .mt-#{$i} { margin-top: 1px * $i !important;    }
+        .mr-#{$i} { margin-right: 1px * $i !important;  }
+        .mb-#{$i} { margin-bottom: 1px * $i !important; }
+        .ml-#{$i} { margin-left: 1px * $i !important;   }
+
+        // padding
+        .p-#{$i}  { padding: 1px * $i !important;        }
+        .pt-#{$i} { padding-top: 1px * $i !important;    }
+        .pr-#{$i} { padding-right: 1px * $i !important;  }
+        .pb-#{$i} { padding-bottom: 1px * $i !important; }
+        .pl-#{$i} { padding-left: 1px * $i !important;   }
+
+        // increment with 5
+        $i: $i + 5;
+    }
+

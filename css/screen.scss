@@ -1,18 +1,22 @@
-// import the defaults
-@import "defaults/variables";
+// the includes
+@import "includes/variables";
+@import "includes/utils";
+
+// the defaults
 @import "defaults/reset";
 @import "defaults/fonts";
 @import "defaults/typography";
-@import "defaults/helpers";
 @import "defaults/mixins";
 
-// the forms styles
+// the form styles
 @import "forms/default";
+@import "forms/elements";
+@import "forms/buttons";
 
 // partials
 @import "partials/header";
 @import "partials/footer";
 
 // pages
-@import "pages/common"; // common style for all pages
-@import "pages/default"; // page-specific layout
+@import "pages/layout";
+@import "pages/home";
